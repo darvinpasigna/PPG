@@ -1,0 +1,123 @@
+.background {
+  background-image: url('./Images/Carousel2.jpg');
+  height: 100vh;
+  background-size: cover;
+  position: fixed;
+  background-repeat: no-repeat;
+  width: 100%;
+  z-index: -1;
+}
+
+.navbar {
+  .nav-link {
+    margin-left: 20px;
+  }
+  
+  .nav-link:hover, .btn:hover {
+    box-shadow: 0 0 5px 5px rgba(0, 0, 255, 0.315);
+    border-radius: 10px;
+    padding: 10px;
+    color: rgba(245, 245, 245, 0.886);
+  }
+  .btn {
+    color: gray;
+  }
+}
+
+#login {
+  fieldset {
+    padding: 20px;
+  }
+}
+#signup {
+  form {
+    padding: 20px;
+  }
+  input{
+    margin: 5px;
+  }
+}
+
+.dropdown-menu {
+  li{
+    padding: 5px 10px 5px 10px;
+    
+  }
+  li:hover{
+    box-shadow: 0 0 5px 5px rgba(0, 0, 255, 0.315);
+    color: whitesmoke;
+  }
+}
+
+#Logo1 {
+  max-width: 50px;
+}
+
+#aboutcont {
+  color: rgb(204, 207, 211);
+  img{
+    max-width: 400px;
+  }
+  #shortIntro {
+    background-color: rgba(14, 13, 13, 0.252);
+    padding: 20px;
+  }
+  #aboutcontright {
+    p{
+      background-color: rgba(14, 13, 13, 0.252);
+      margin-top: 100px;
+      padding: 20px;
+    }
+    button {
+      margin: auto;
+    }
+  }
+}
+
+#PPGcarou {
+  width: 100%;
+  img{
+    height: 660px;
+  }
+
+}
+
+h1 {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.462);
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+ .card {
+  margin-right: 10px;
+ }
+}
+
+footer {
+  background-color: black;
+  img {
+    max-width: 100px;
+  }
+  #socialmed {
+    ul{
+      display: flex;
+    align-items: end;
+    justify-content: end;
+    padding-top: 50px;
+    }
+  }
+#footerContenet {
+  img {
+    max-width: 100px;
+  }
+}
+ 
+}
+#copyright {
+  background-color: rgba(57, 53, 53, 0.97);
+  color: aliceblue;
+  text-align: center;
+}
