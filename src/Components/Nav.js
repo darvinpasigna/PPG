@@ -9,15 +9,32 @@ function NavBar() {
   const [regPassword, setRegPassword] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
 
   const handleSubmit = () => {
+
+    if (!username || !password) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
       if (username === regUsername && password === regPassword) {
           window.location.replace('./Login')
       } else {
           alert("Wrong Username or Password");
       }
+      
   }
-  
+
+  const handleReg = () => {
+    if (regPassword !== confirmPass) {
+      alert('Passwords do not match');
+      return;
+    }
+      
+  }
+
+
   return (
     <>
       <nav className="navbar sticky-top navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body" data-bs-theme="dark">
@@ -59,7 +76,10 @@ function NavBar() {
        <div className="modal" id="login">
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
-                    <form id="loginFormElement">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                    <form>
                         <fieldset>
                             <label className="form-label">USERNAME:</label>
                             <input
@@ -90,7 +110,7 @@ function NavBar() {
                             >Login</button>
 
                             <br /> <br />
-                            <a href="#" style={{color: "red"}}>Forgot password?</a>
+                            <a style={{color: "red"}}>Forgot password?</a>
                             <br /> <br />
                             <p>Not a member?</p>
 
@@ -113,6 +133,10 @@ function NavBar() {
             <div className="modal" id="signup">
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
+                    <div class="modal-header">
+                      <h5>SIGN UP</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
                 <form>
                     <fieldset>
                         <input className="form-control" type="text" placeholder="First Name" required/>
@@ -137,14 +161,21 @@ function NavBar() {
                         onChange={(e) => setRegPassword(e.target.value)}
                         />
 
-                        <input className="form-control" type="password" placeholder="Confirm Password" required/>
+                        <input 
+                        className="form-control" 
+                        type="password" 
+                        placeholder="Confirm Password" 
+                        value={confirmPass}
+                        onChange={(e) => setConfirmPass(e.target.value)}
+                        required/>
                         <br />
                         <button 
                         className="btn btn-success form-control" 
                         type='button'
                         data-bs-toggle="modal" 
                         data-bs-target="#login"
-                        >Sign Up</button>
+                        onClick={handleReg}
+                        >SUBMIT</button>
                       </fieldset>
                 </form>
                     </div>

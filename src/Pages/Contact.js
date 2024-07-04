@@ -1,13 +1,17 @@
 import '../App.css';
 import React from 'react';
-import Aboutcontent from '../Components/Aboutcontent';
+import ContactContent from '../Components/ContactContent';
 import NavBar from '../Components/Nav';
+import Footer from '../Components/Footer';
+
 const Contact = () => {
     return (
       <>
         <NavBar />
         <div className="background"></div>
-        <Aboutcontent/>
+        <ContactContent />
+        <br /><br />
+        <Footer />
       </>
     );
   }

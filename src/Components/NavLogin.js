@@ -23,13 +23,13 @@ function NavLogin() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <Link className="nav-link" to="/memberhome">Home</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="./About">About Us</Link>
+              <Link className="nav-link" to="/memberabout">About Us</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/Contact">Contact Us</Link>
+              <Link className="nav-link" to="/membercontact">Contact Us</Link>
             </li>
           </ul>
           <form className="d-flex" role="search">
@@ -46,7 +46,7 @@ function NavLogin() {
             aria-expanded="false"
             >Profile</button>
             <ul className='dropdown-menu'>
-                <li>Personal Info</li>
+                <li><Link to="/personalprofile" style={{textDecoration: "none", color: 'lightgray'}}>Personal Info</Link></li>
                 <li>Account Settings</li>
                 <li><Link to="/" style={{textDecoration: "none", color: 'lightgray'}}>Logout</Link></li>
             </ul>

@@ -2,6 +2,7 @@ import '../App.css';
 import Carou from '../Components/Carou';
 import Card from '../Components/Card';
 import NavBar from '../Components/Nav';
+import Footer from '../Components/Footer';
 
 function Home () {
     return (
@@ -11,16 +12,13 @@ function Home () {
         <Carou/>
         <br />
         <br />
-        <h1 style={{color: "lightgray"}}>TOP SALE</h1>
+        <h1 style={{color: "lightgray"}}>Rare Cards</h1>
         <Card/>
         <br />
         <br />
         <h1 style={{color: "lightgray"}}>TRENDING IN 2024</h1>
-        <Card/>
         <br />
-        <br />
-        <br />
-        <br />
+        <Footer />
         </>
 )}
 

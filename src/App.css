@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
 .background {
-  background-image: url('./Images/Carousel2.jpg');
+  background-image: url('./Images/background.jpg');
   height: 100vh;
   background-size: cover;
   position: fixed;
@@ -53,6 +56,11 @@
   max-width: 50px;
 }
 
+.personaldetail {
+  background-color: rgba(0, 0, 0, 0.523);
+  padding: 20px;
+}
+
 #aboutcont {
   color: rgb(204, 207, 211);
   img{
@@ -87,14 +95,7 @@ h1 {
   background-color: rgba(0, 0, 0, 0.462);
 }
 
-.card-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
- .card {
-  margin-right: 10px;
- }
-}
+
 
 footer {
   background-color: black;
@@ -120,4 +121,52 @@ footer {
   background-color: rgba(57, 53, 53, 0.97);
   color: aliceblue;
   text-align: center;
+}
+
+.contact  {
+  /* display: flex; */
+  text-align: center;
+  padding-top: 20px;
+  .col-4 {
+      /* box-shadow: 5px 5px 5px 5px darkgrey; */
+      padding: 20px 0 20px 0;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.497);
+  }
+  img {
+    max-width: 300px;
+  }
+  
+  .col-5 {
+    color: white;
+  }
+  .contacttopcont{
+    background-color: rgba(0, 0, 0, 0.236);
+    padding-top: 70px;
+  }
+}
+
+.aboutintro {
+  background-color: rgba(0, 0, 0, 0.289);
+  color: whitesmoke;
+  padding: 20px;
+}
+
+#aboutcont{
+  margin-bottom: 200px;
+  color: whitesmoke;
+}
+
+#c1{
+  background-color: rgba(0, 0, 0, 0.104);
+  color: whitesmoke;
+}
+
+.d-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.carditem {
+  margin: 5px;
 }
