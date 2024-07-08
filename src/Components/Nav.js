@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Logo from '../Images/Logo.png';
 import { Link } from 'react-router-dom';
 import '../App.css';
@@ -7,33 +6,48 @@ import '../App.css';
 function NavBar() {
   const [regUsername, setRegUsername] = useState("");
   const [regPassword, setRegPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [memberInfo, setMemberInfo] = useState(() => JSON.parse(sessionStorage.getItem('member')) || []);
 
-  const handleSubmit = () => {
+  const handleSignup = () => {
+    const newMember = [...memberInfo, {
+      regUsername,
+      regPassword,
+      confirmPass,
+      firstName,
+      lastName,
+      email,
+      memberInfo,
+    }];
+    sessionStorage.setItem('member', JSON.stringify(newMember));
+    setMemberInfo(newMember);
 
-    if (!username || !password) {
+    if (!firstName || !lastName || !email || !regUsername || !regPassword || !confirmPass) {
+      alert("Please fill in all fields.");
+    
+    }
+
+    if (regPassword !== confirmPass) {
+      alert('Passwords do not match');
+    
+    }
+  }
+
+  const handleLogin = () => {
+    if (!regUsername || !regPassword) {
       alert("Please fill in all fields.");
       return;
     }
 
-      if (username === regUsername && password === regPassword) {
-          window.location.replace('./Login')
-      } else {
-          alert("Wrong Username or Password");
-      }
-      
-  }
-
-  const handleReg = () => {
-    if (regPassword !== confirmPass) {
-      alert('Passwords do not match');
-      return;
+    if (regUsername === regUsername && regPassword === regPassword) {
+      window.location.replace('./memberhome');
+    } else {
+      alert("Wrong Username or Password");
     }
-      
   }
-
 
   return (
     <>
@@ -68,120 +82,137 @@ function NavBar() {
               <button className="btn btn-outline-none" style={{ backgroundColor: "dark" }} type="submit">Search</button>
               <button className="btn btn-outline-none" style={{ backgroundColor: "dark" }} type='button' data-bs-toggle="modal" data-bs-target="#login">Login</button>
             </form>
-           
           </div>
         </div>
       </nav>
-       {/* Login Modal */}
-       <div className="modal" id="login">
-            <div className="modal-dialog modal-dialog-centered">
-                <div className="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                    <form>
-                        <fieldset>
-                            <label className="form-label">USERNAME:</label>
-                            <input
-                                id="username"
-                                className="form-control"
-                                placeholder="Enter Email Address"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                required
-                            />
-                            <br />
-                            <label className="form-label">PASSWORD:</label>
-                            <input
-                                type="password"
-                                id="password"
-                                className="form-control"
-                                placeholder="Enter Password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                            />
-                            <br />
-
-                            <button 
-                            type="button" 
-                            className="btn btn-primary form-control"
-                            onClick={handleSubmit}
-                            >Login</button>
-
-                            <br /> <br />
-                            <a style={{color: "red"}}>Forgot password?</a>
-                            <br /> <br />
-                            <p>Not a member?</p>
-
-                            <button 
-                            className='btn btn-success form-control' 
-                            type='button' 
-                            data-bs-toggle="modal" 
-                            data-bs-target="#signup"
-                            >Sign Up</button>
-                            <br /><br />
-                            
-                        </fieldset>
-                    </form>
-                </div>
+      
+      {/* Login Modal */}
+      <div className="modal" id="login">
+        <div className="modal-dialog modal-dialog-centered" style={{ width: "400px" }}>
+          <div className="modal-content">
+            <div className="modal-header">
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" style={{ height: "5px" }}></button>
             </div>
+            <form>
+              <fieldset>
+                <div className="form-floating">
+                  <input
+                    id="username"
+                    className="form-control"
+                    value={regUsername}
+                    onChange={(e) => setRegUsername(e.target.value)}
+                    required
+                  />
+                  <label htmlFor="username" style={{ fontStyle: "italic", fontFamily: "sans-serif", fontWeight: "bolder" }}>USERNAME:</label>
+                </div>
+                <br />
+                <div className="form-floating">
+                  <input
+                    type="password"
+                    id="password"
+                    className="form-control"
+                    value={regPassword}
+                    onChange={(e) => setRegPassword(e.target.value)}
+                    required
+                  />
+                  <label
+                    htmlFor="password"
+                    style={{
+                      fontStyle: "italic",
+                      fontFamily: "sans-serif",
+                      fontWeight: "bolder"
+                    }}>PASSWORD:</label>
+                </div>
+                <br />
+                <button
+                  type="button"
+                  className="btn btn-primary form-control"
+                  onClick={handleLogin}
+                >Login</button>
+                <br /> <br />
+                <a style={{ color: "red" }}>Forgot password?</a>
+                <br /> <br />
+                <p>Not a member?</p>
+                <button
+                  className='btn btn-success form-control'
+                  type='button'
+                  data-bs-toggle="modal"
+                  data-bs-target="#signup"
+                >Sign Up</button>
+                <br /><br />
+              </fieldset>
+            </form>
+          </div>
         </div>
-            {/* End Login Modal */}
+      </div>
+      {/* End Login Modal */}
 
-            {/* Sign up Modal */}
-            <div className="modal" id="signup">
-                <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
-                    <div class="modal-header">
-                      <h5>SIGN UP</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form>
-                    <fieldset>
-                        <input className="form-control" type="text" placeholder="First Name" required/>
-                        <input className="form-control" type="text" placeholder="Last Name" required/>
-                        <input className="form-control" type="email" placeholder="Email" required/>
-
-                        <input 
-                        className="form-control" 
-                        type="text" 
-                        placeholder="Create Username" 
-                        required
-                        value={regUsername}
-                        onChange={(e) => setRegUsername(e.target.value)}
-                        />
-
-                        <input 
-                        className="form-control" 
-                        type="password" 
-                        placeholder="Create Password" 
-                        required
-                        value={regPassword}
-                        onChange={(e) => setRegPassword(e.target.value)}
-                        />
-
-                        <input 
-                        className="form-control" 
-                        type="password" 
-                        placeholder="Confirm Password" 
-                        value={confirmPass}
-                        onChange={(e) => setConfirmPass(e.target.value)}
-                        required/>
-                        <br />
-                        <button 
-                        className="btn btn-success form-control" 
-                        type='button'
-                        data-bs-toggle="modal" 
-                        data-bs-target="#login"
-                        onClick={handleReg}
-                        >SUBMIT</button>
-                      </fieldset>
-                </form>
-                    </div>
-                </div>
+      {/* Sign up Modal */}
+      <div className="modal" id="signup">
+        <div className="modal-dialog modal-dialog-centered" style={{ width: "400px" }}>
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5>SIGN UP</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            {/* End Sign Up Modal */}
+            <form>
+              <fieldset>
+                <div className="input-group input-group-sm mb-3">
+                  <span className="input-group-text">First Name</span>
+                  <input type="text" className="form-control" id='Fname' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                </div>
+                <div className="input-group input-group-sm mb-3">
+                  <span className="input-group-text">Last Name</span>
+                  <input type="text" className="form-control" id='Lname' value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                </div>
+                <div className="input-group input-group-sm mb-3">
+                  <span className="input-group-text">Email</span>
+                  <input type="email" className="form-control" id='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                </div>
+                <div className="input-group input-group-sm mb-3">
+                  <span className="input-group-text">Create Username</span>
+                  <input
+                    id='Cusername'
+                    className="form-control"
+                    type="text"
+                    required
+                    value={regUsername}
+                    onChange={(e) => setRegUsername(e.target.value)}
+                  />
+                </div>
+                <div className="input-group input-group-sm mb-3">
+                  <span className="input-group-text">Create Password</span>
+                  <input
+                    id='Cpass'
+                    className="form-control"
+                    type="password"
+                    required
+                    value={regPassword}
+                    onChange={(e) => setRegPassword(e.target.value)}
+                  />
+                </div>
+                <div className="input-group input-group-sm mb-3">
+                  <span className="input-group-text">Re-Enter Password</span>
+                  <input
+                    id='repass'
+                    className="form-control"
+                    type="password"
+                    value={confirmPass}
+                    onChange={(e) => setConfirmPass(e.target.value)}
+                    required />
+                </div>
+                <br />
+                <button
+                  className="btn btn-success form-control"
+                  type='submit'
+                  onClick={handleSignup}
+                >SUBMIT</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+      {/* End Sign Up Modal */}
     </>
   );
 }

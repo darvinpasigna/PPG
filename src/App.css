@@ -16,7 +16,7 @@
     margin-left: 20px;
   }
   
-  .nav-link:hover, .btn:hover {
+  .nav-link:hover, .btn:hover, #cart:hover {
     box-shadow: 0 0 5px 5px rgba(0, 0, 255, 0.315);
     border-radius: 10px;
     padding: 10px;
@@ -24,6 +24,13 @@
   }
   .btn {
     color: gray;
+  }
+  #cart {
+    color: gray;
+    width: 150px;
+    padding-top: 7px;
+    margin-left: 20px;
+    text-decoration: none;
   }
 }
 
@@ -36,9 +43,7 @@
   form {
     padding: 20px;
   }
-  input{
-    margin: 5px;
-  }
+ 
 }
 
 .dropdown-menu {
@@ -168,5 +173,16 @@ footer {
 }
 
 .carditem {
-  margin: 5px;
+  margin: 2px;
 }
+
+
+.checkout {
+  background: rgb(225, 225, 233);
+  border-radius: 10px;
+  position: fixed;
+  right: 50px;
+  form {
+      padding: 20px;
+  }
+ }

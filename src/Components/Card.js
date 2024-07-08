@@ -22,7 +22,7 @@ const Card = () => {
   return (
     <>
       <div className='container d-flex-wrap'>
-        {highLevelCards.slice(30, 34).map((card) => (
+        {highLevelCards.slice(400, 408).map((card) => (
           <div key={card.id} className="card mb-3 carditem" style={{ maxWidth: "45%" }}>
             <div className="row g-0">
               <div className="col-md-4">
@@ -56,7 +56,16 @@ const Card = () => {
                       )}
                     </small>
                   </p>
-                  <button className='btn btn-primary' type='button' data-bs-toggle="modal" data-bs-target="#forgotologin">BUY NOW</button>
+                  <div className='d-flex'>
+                  <h6>&#8369; {card.card_prices[0].cardmarket_price}</h6>
+                  <button 
+                  className='btn btn-primary' 
+                  type='button' 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#forgotologin" 
+                  style={{marginLeft: "200px"}}
+                  >BUY NOW</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -64,17 +73,17 @@ const Card = () => {
         ))}
       </div>
         <div className='modal' id='forgotologin'>
-          <div className='modal-dialog modal-dialog-centered' style={{width: "300px"}}>
+          <div className='modal-dialog modal-dialog-centered' style={{width: "400px"}}>
             <div className='modal-content'>
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <h5 style={{paddingLeft: "20px"}}>Oops! You forgot to login.</h5> <br />
+              </div> <br />
+              <h5 style={{paddingLeft: "20px", color: "red"}}>Oops! You forgot to login!!</h5>
               <p style={{padding: "0 20px 0 20px"}}>Not a member? click the button below to sign up.
               </p>
               <div class="modal-footer" style={{margin: "auto"}}>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">Login here</button>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signup">Sign Up</button>
+                <button style={{marginLeft: "50px"}} type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#signup">Sign Up</button>
             </div>
             </div>
           </div>

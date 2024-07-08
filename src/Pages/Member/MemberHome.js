@@ -1,7 +1,7 @@
 import '../../App.css';
 import NavLogin from '../../Components/NavLogin';
 import Footer from '../../Components/Footer';
-import Card from '../../Components/Card';
+import LoginCards from '../../Components/LoginCards';
 import Carou from '../../Components/Carou';
 
 function MemberHome () {
@@ -13,7 +13,7 @@ function MemberHome () {
         <br />
         <br />
         <h1 style={{color: "lightgray"}}>TOP SALE</h1>
-        <Card/>
+        <LoginCards />
         <br />
         <br />
         <h1 style={{color: "lightgray"}}>TRENDING IN 2024</h1>

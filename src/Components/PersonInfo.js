@@ -11,6 +11,8 @@ function PersonalInfo() {
     const boyAvatar = [mavatar1, mavatar2, mavatar3];
     const girlAvatar = [favatar1, favatar2, favatar3];
     const [gender, setGender] = useState('');
+    // const profileInfo = JSON.parse(sessionStorage.getItem('member'));
+    
 
     function RandomAvatar() {
         const randomMAvatar = Math.floor(Math.random() * boyAvatar.length);
